@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { BrowserRouter, Route, Redirect, Switch, Link } from "react-router-dom";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import HomePage from "./pages/homePage.js";
-import MoviePage from './pages/movieDetailsPage.js'
+import MoviePage from './pages/moviePage.js'
 import FavoriteMoviesPage from './pages/favoritesMoviesPage.js'
 
 const App = () => {
