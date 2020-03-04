@@ -6,34 +6,24 @@ import HomePage from "./pages/homePage.js";
 import MoviePage from './pages/moviePage.js'
 import FavoriteMoviesPage from './pages/favoritesMoviesPage.js'
 import MovieReviewPage from './pages/movieReviewPage.js'
+import SiteHeader from './components/siteHeader'
 
 const App = () => {
   return (
     <BrowserRouter>
-    <div className="jumbotron">
-      <div className="container-fluid">
-        <ul className="navbar-nav text-black">
-          <li className="nav-item">
-            <Link className="nav-link " to="/">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link " to="/movies/favorites">
-              Favorites
-            </Link>
-          </li>
-        </ul>
-        <Switch>
-          <Route path="/reviews/:id" component={MovieReviewPage} />
-          <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
-          <Route path="/movies/:id" component={MoviePage} />
-          <Route path="/" component={HomePage} />
-          <Redirect from="*" to="/" />
-        </Switch>
+      <div className="jumbotron">
+        <SiteHeader />      {/* New Header  */}
+        <div className="container-fluid">
+          <Switch>
+            <Route path="/reviews/:id" component={MovieReviewPage} />
+            <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
+            <Route path="/movies/:id" component={MoviePage} />
+            <Route path="/" component={HomePage} />
+            <Redirect from="*" to="/" />
+          </Switch>
+        </div>
       </div>
-    </div>
-  </BrowserRouter>
+    </BrowserRouter>
   );
 };
 
