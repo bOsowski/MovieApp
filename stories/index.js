@@ -2,6 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieCard from "../src/components/movieCard";
+import CastCard from "../src/components/castCard";
 import FilterControls from "../src/components/filterControls";
 import MoviesHeader from "../src/components/headerMovieList";
 import MovieList from "../src/components/movieList";
@@ -14,6 +15,7 @@ import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
+import CastList from "../src/components/cast";
 
 const sample = {
   adult: false,
@@ -96,6 +98,32 @@ const sample = {
   vote_count: 9692
 };
 
+const sampleCast = {
+  "id": 570670,
+  "cast": [
+    {
+      "cast_id": 7,
+      "character": "Cecilia Kass",
+      "credit_id": "5c7bb553c3a36841dc1b2bbc",
+      "gender": 1,
+      "id": 32798,
+      "name": "Elisabeth Moss",
+      "order": 0,
+      "profile_path": "/vZDe22EtLtcHvPr28l4ZM0b7qjG.jpg"
+    },
+    {
+      "cast_id": 11,
+      "character": "James Lanier",
+      "credit_id": "5d0e4ff40e0a2602a1cc1712",
+      "gender": 2,
+      "id": 83860,
+      "name": "Aldis Hodge",
+      "order": 2,
+      "profile_path": "/bwnP5uuAsJgceLF2kJbeMJN0ONP.jpg"
+    }
+  ]
+}
+
 storiesOf("Home Page/MovieCard", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
@@ -117,6 +145,17 @@ storiesOf("Home Page/MovieCard", module)
       />
     );
   });
+
+
+storiesOf("Movie Details Page/CastCard", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => (
+    <CastCard
+      cast={sampleCast.cast[0]}
+    ></CastCard>
+  ))
 
 storiesOf("Home Page/FilterControls", module)
   .addDecorator(story => (
@@ -146,6 +185,18 @@ storiesOf("Home Page/MovieList", module)
     );
   });
 
+  storiesOf("Movie Details Page/CastList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    return (
+      <CastList
+      cast={sampleCast.cast}
+      />
+    )
+  })
+
 storiesOf("Movie Details Page/MovieDetails", module).add("default", () => (
   <MovieDetails movie={sample} />
 ));
@@ -166,10 +217,10 @@ storiesOf("Movie Details Page/MovieReviews", module)
 
 storiesOf("Movie Details Page/MovieReview", module)
   .add("default", () => {
-    return <MovieReview review={{ author:"Bartosz Osowski", content:"Test review."}} />
+    return <MovieReview review={{ author: "Bartosz Osowski", content: "Test review." }} />
   });
 
 storiesOf("Write a Review Page/ReviewForm", module)
-.add("default", () => {
-  return <ReviewForm movie={sample} />
-})
+  .add("default", () => {
+    return <ReviewForm movie={sample} />
+  })
