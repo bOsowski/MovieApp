@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./creditsCard.css";
 import "../../globals/fontawesome";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Credits = ({ cast }) => {
   return (
@@ -11,14 +10,14 @@ const Credits = ({ cast }) => {
         <Link to={`/casts/${cast.id}`}>
           <img
             className="card-img-tag center "
-            title={`${cast.name} as ${cast.character}`}
             alt={cast.name}
             src={
               cast.profile_path
                 ? `https://image.tmdb.org/t/p/w500/${cast.profile_path}`
-                : "./film-poster-placeholder.png"
+                : "/profile.png"
             }
           />
+          <p>{`${cast.name} as ${cast.character}`}</p>
         </Link>
       </div>
     </div>

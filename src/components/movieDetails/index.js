@@ -1,7 +1,5 @@
 import "./movieDetails.css";
 import React, { useEffect, useState } from "react";
-import { getMovieCredits } from "../../api/tmdb-api";
-import CreditsList from "../credits";
 
 export default ({ movie }) => {
   return (
@@ -63,8 +61,6 @@ export default ({ movie }) => {
           </li>
         ))}
       </ul>
-        <h4>Cast</h4>
-           <CreditsList movie={movie}></CreditsList> 
     </>
   );
 };
