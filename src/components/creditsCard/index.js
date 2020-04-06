@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./castCard.css";
+import "./creditsCard.css";
 import "../../globals/fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const CastCard = ({ cast }) => {
-
+const Credits = ({ cast }) => {
   return (
     <div className="col-sm-1">
       <div className="card  bg-white">
@@ -26,4 +25,4 @@ const CastCard = ({ cast }) => {
   );
 };
 
-export default CastCard;
+export default Credits;

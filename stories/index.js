@@ -2,7 +2,7 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import "../node_modules/bootstrap/dist/css/bootstrap.css";
 import MovieCard from "../src/components/movieCard";
-import CastCard from "../src/components/castCard";
+import CreditsCard from "../src/components/creditsCard";
 import FilterControls from "../src/components/filterControls";
 import MoviesHeader from "../src/components/headerMovieList";
 import MovieList from "../src/components/movieList";
@@ -15,7 +15,7 @@ import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
 import GenresContextProvider from "../src/contexts/genresContext";
 import { action } from "@storybook/addon-actions";
-import CastList from "../src/components/cast";
+import CreditsList from "../src/components/credits";
 
 const sample = {
   adult: false,
@@ -147,14 +147,14 @@ storiesOf("Home Page/MovieCard", module)
   });
 
 
-storiesOf("Movie Details Page/CastCard", module)
+storiesOf("Movie Details Page/CreditsCard", module)
   .addDecorator(story => (
     <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
   ))
   .add("default", () => (
-    <CastCard
+    <CreditsCard
       cast={sampleCast.cast[0]}
-    ></CastCard>
+    ></CreditsCard>
   ))
 
 storiesOf("Home Page/FilterControls", module)
@@ -185,18 +185,6 @@ storiesOf("Home Page/MovieList", module)
     );
   });
 
-  storiesOf("Movie Details Page/CastList", module)
-  .addDecorator(story => (
-    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
-  ))
-  .add("default", () => {
-    return (
-      <CastList
-      cast={sampleCast.cast}
-      />
-    )
-  })
-
 storiesOf("Movie Details Page/MovieDetails", module).add("default", () => (
   <MovieDetails movie={sample} />
 ));
@@ -213,6 +201,14 @@ storiesOf("Movie Details Page/MovieReviews", module)
   ))
   .add("default", () => {
     return <MovieReviews movie={sample} />
+  });
+
+  storiesOf("Movie Details Page/CreditsList", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    return <CreditsList movie={sample} />
   });
 
 storiesOf("Movie Details Page/MovieReview", module)
