@@ -5,6 +5,7 @@ import PageTemplate from "../components/templateMoviePage";
 import MovieReviews from "../components/movieReviews";
 import useMovie from "../hooks/useMovie";
 import CreditsList from "../components/credits";
+import Videos from "../components/videos";
 
 const MoviePage = props => {
     const { id } = props.match.params;
@@ -15,6 +16,7 @@ const MoviePage = props => {
                 <>
                     <PageTemplate movie={movie}>
                         <MovieDetails movie={movie} />
+                        <Videos movie={movie} />
                     </PageTemplate>
                     <div className="row">
                         <div className="col-12 ">

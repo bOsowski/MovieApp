@@ -29,6 +29,13 @@ export const getGenres = () => {
     .then(json => json.genres);
 };
 
+export const getMovieVideos = id => {
+  return fetch(
+    `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_KEY}`
+  )
+   .then(res => res.json())
+};
+
 export const getMovieReviews = id => {
   return fetch(
     `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${process.env.REACT_APP_TMDB_KEY}`

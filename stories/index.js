@@ -10,6 +10,7 @@ import MovieDetails from "../src/components/movieDetails";
 import MovieHeader from "../src/components/headerMovie";
 import MovieReviews from "../src/components/movieReviews";
 import MovieReview from "../src/components/movieReview";
+import Videos from "../src/components/videos";
 import ReviewForm from "../src/components/reviewForm"
 import AddFavoriteButton from "../src/components/buttons/addToFavorites";
 import { MemoryRouter } from "react-router";
@@ -209,6 +210,15 @@ storiesOf("Movie Details Page/MovieReviews", module)
   ))
   .add("default", () => {
     return <CreditsList movie={sample} />
+  });
+
+
+  storiesOf("Movie Details Page/Videos", module)
+  .addDecorator(story => (
+    <MemoryRouter initialEntries={["/"]}>{story()}</MemoryRouter>
+  ))
+  .add("default", () => {
+    return <Videos movie={sample} />
   });
 
 storiesOf("Movie Details Page/MovieReview", module)
