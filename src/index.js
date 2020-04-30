@@ -10,6 +10,9 @@ import SiteHeader from './components/siteHeader';
 import MoviesContextProvider from "./contexts/moviesContext";
 import GenresContextProvider from "./contexts/genresContext"
 import AddMovieReviewPage from './pages/addMovieReviewPage'
+import LoginPage from './pages/loginPage';
+import SignupPage from './pages/signupPage';
+import AuthContextProvider from './contexts/authContext'
 
 const App = () => {
   return (
@@ -19,7 +22,10 @@ const App = () => {
         <div className="container-fluid">
           <MoviesContextProvider>
             <GenresContextProvider>
+	      <AuthContextProvider>
               <Switch>
+	 	<Route exact path="/login" component={LoginPage} />
+	        <Route path="/signup" component={SignupPage} /> />
                 <Route exact path="/reviews/form" component={AddMovieReviewPage} />
                 <Route path="/reviews/:id" component={MovieReviewPage} />
                 <Route exact path="/movies/favorites" component={FavoriteMoviesPage} />
@@ -27,6 +33,7 @@ const App = () => {
                 <Route path="/" component={HomePage} />
                 <Redirect from="*" to="/" />
               </Switch>
+	      </AuthContextProvider>
             </GenresContextProvider>
           </MoviesContextProvider>
         </div>
