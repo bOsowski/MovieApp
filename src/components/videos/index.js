@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import "./videos.css";
 import "../../globals/fontawesome";
 import { getMovieVideos } from "../../api/tmdb-api";
@@ -15,7 +14,7 @@ const Videos = ({ movie }) => {
 
   return (
     <div class="video-div">
-    {videos.results ? videos.results.filter(v =>  v.site == 'YouTube').map( video => {
+    {videos.results ? videos.results.filter(v =>  v.site === 'YouTube').map( video => {
    return <iframe
         width="550"
         height="315"

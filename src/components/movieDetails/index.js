@@ -1,5 +1,5 @@
 import "./movieDetails.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 export default ({ movie }) => {
   return (

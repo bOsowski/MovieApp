@@ -63,20 +63,24 @@ export const getMovies = () => {
     }).then(res => res.json())
   };
 
-//todo: fix the below to use the express API
-export const getMovieVideos = id => {
-  return fetch(
-	  null
-    //`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_KEY}`
-  )
-   .then(res => res.json())
-};
-
-
 export const getMovieCredits = id => {
   return fetch(
-	  null
-    //`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_TMDB_KEY}`
-  )
-   .then(res => res.json())
+    `/api/movies/${id}/credits`,
+    {headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+)
+    .then(res => res.json())
+};
+
+export const getMovieVideos = id => {
+  return fetch(
+    `/api/movies/${id}/videos`,
+    {headers: {
+      'Authorization': window.localStorage.getItem('token')
+   }
+ }
+)
+    .then(res => res.json())
 };
